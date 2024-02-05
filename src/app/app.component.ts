@@ -17,4 +17,19 @@ export class AppComponent {
       postalCode: new FormControl('')
     })
   });
+
+  loadApiData(){
+    this.registrationForm.setValue({
+      username: 'Bruce',
+      password: 'test',
+      confirmPassword: 'test',
+      address: {
+        city: 'Gotham',
+        state: 'New York',
+        postalCode: '12345'
+      }
+    }); 
+  }
 }
+
+//set value is used to set values  to all form controls and patch values is used to set few of the formControl
