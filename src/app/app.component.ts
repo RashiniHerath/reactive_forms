@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'reactive_forms';
+  registrationForm = new FormGroup({
+    username: new FormControl('Rash'),
+    password: new FormControl(''),
+    confirmPassword: new FormControl('') //add object controls
+  });
 }
