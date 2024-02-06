@@ -3,7 +3,12 @@
   <form [formGroup]="registrationForm" >
     <div class="form-group">
       <label for="name">Username:</label>
-      <input formControlName="username" type="text" class="form-control" >
+      <input [class.is.invalid]="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" formControlName="username" type="text" class="form-control" >
+     <small [class.d.none]="registrationForm.get('username')?.valid || registrationForm.get('username')?.untouched" class="text-danger">Username is required</small>
+      <!--   
+      <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" class="text-danger">
+        Username is required, min length of 4 and max length of 10.
+       -->
     </div>
     <div class="form-group">
       <label for="email">Password</label>
