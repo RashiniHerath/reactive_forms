@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { validateHeaderName } from 'http';
 import { forbiddenNameValidator } from './shared/user-name-validator';
+import { passwordValidator } from './shared/password.validator';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,7 +20,11 @@ export class AppComponent {
       state: [''], 
       postalCode: ['']
     })
+  }, 
+  {
+    validators: passwordValidator
   });
+  }
 
   // registrationForm = new FormGroup({
   //   username: new FormControl('Rash'),
@@ -34,17 +38,23 @@ export class AppComponent {
   // });
 
   loadApiData(){
-    this.registrationForm.setValue({
-      username: 'Bruce',
-      password: 'test',
-      confirmPassword: 'test',
-      address: {
-        city: 'Gotham',
-        state: 'New York',
-        postalCode: '12345'
-      }
-    }); 
+    if (this.registrationForm) {
+      this.registrationForm.setValue({
+        username: 'Bruce',
+        password: 'test',
+        confirmPassword: 'test',
+        address: {
+          city: 'Gotham',
+          state: 'New York',
+          postalCode: '12345'
+        }
+      }); 
+    }
   }
 }
 
+
+function loadApiData() {
+  throw new Error('Function not implemented.');
+}
 //set value is used to set values  to all form controls and patch values is used to set few of the formControl
